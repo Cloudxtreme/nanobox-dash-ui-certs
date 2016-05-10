@@ -1,0 +1,32 @@
+#app-certs-edit             {
+
+  .step                     {
+
+    &.one                   {
+      p em                  { }
+      .textarea             { width:100%; height:400px; margin-bottom:24px; }
+    }
+
+    &.two                   {
+      fieldset              { margin-bottom:0; }
+
+      .form-group           { display:inline-block; position:relative; width:100%; margin-bottom:35px;
+        .label              { @include font-size(16px); position:absolute; top:10px; left:-10px; width:100px; text-align:right; color:$dashboard_92;
+          &:after           { @include pagodacons(normal, '\0072'); @include font-size(26px); position:absolute; top:5px; right:-32px; color:$white; }
+        }
+
+        .textarea           { float:right; width:500px; height:232px; background:$white; }
+      }
+    }
+  }
+
+  span.back                 { @include font-size(15px, 36px); color:$dashboard_73; font-family:$museo; cursor:pointer; margin-left:145px; }
+
+  .update-cert              {
+    .cancel                 { background:none; width:auto; }
+    button.forward          { color:$dashboard_73; font-family:$museo; height:36px; margin: 3px 15px; padding: 0px 12px 0 20px; font-size:15px;
+      &:after               { border-width:18px 15px; right:-30px; }
+    }
+  }
+
+}

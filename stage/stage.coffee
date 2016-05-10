@@ -1,2 +1,3 @@
-console.log "Hello from ./stage/stage.coffee"
-app = new nanobox.SslCerts( $("body") )
+window.init = () ->
+  certs = new nanobox.Certs $("body")
+  certs.build()

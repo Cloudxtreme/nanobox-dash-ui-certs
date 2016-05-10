@@ -1,0 +1,45 @@
+.nanobox-dash-ui-certs                {width:100%;
+
+  .cert, .key                         {@include font-size(14px); position:relative; margin-bottom:8px; padding:8px; color:$dashboard_27; background:$dashboard_11;
+    // .ficon-x                          {float:right; padding:8px 8px 8px 16px; color:$dashboard_88; }
+  }
+
+  // cert
+  .cert                               {display:flex; align-items:center;
+
+    // &:before                          { @include stamp("\0021", $white, $dashboard_23); position:absolute; top:0px; left:0px; margin:14px; }
+
+    .cert-domain                      {@include truncate();}
+    .edit-cert                        {@include font-size(15px); padding:8px 10px; color:$dashboard_88; border-left:1px solid $dashboard_68; cursor:pointer;}
+    button.save-cert                  {@include font-size(13px); padding:8px 5px; color:$dashboard_88; border-left:1px solid $dashboard_68; transition:none;
+      &:before                        {content:'save';}
+      &.saving                        {padding:8px 12px; pointer-events:none;
+        // &:before                      { content: '\0069'; display:inline-block; @include pagodacons(); @include spin(); }
+      }
+    }
+    // .ficon-x                          { border-left:1px solid $dashboard_14; }
+
+    // .edit-cert, .save-cert, .ficon-x  { &:hover { color:white; } }
+
+    // incomplete
+    &.incomplete                      {
+      .action                         {@include transition(); position:absolute; top:0px; left:0px; width:120px; margin-right:34px; padding:16px 0px; text-align:center; color:$dashboard_73; background:$white; cursor:pointer;
+        &:after                       {@include transition(); content:""; border-top:23px solid red; border-bottom:23px solid red; border-left:16px solid red; border-color:transparent transparent transparent $white; }
+
+        &:hover, &.active             { color:$white; background:$dashboard_73;
+          &:after                     { border-color:transparent transparent transparent $dashboard_73; }
+        }
+      }
+    }
+
+    // installed
+    &.installed                       {background:$dashboard_73;
+      // .ficon-x                        {border-left-color: white;}
+      // &:before                        {@include stamp("\0063", $white, $dashboard_14); @include font-size(12px, 20px); margin-right:10px;}
+
+      // .cert-domain                    {
+      //   .cert-domain                  {width:300px;}
+      // }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+#app-certs-new.columns.col_right.eight
+
+  h2 New SSL Certificate - Step 1 of 3
+
+  //- 
+  form
+    #errors
+
+    fieldset
+      .row
+        .form-group.ssl-domain
+          .label Domain Name
+          .input.error
+            input
+
+        .form-group.ssl-email
+          .label Email
+          .input
+            input
+
+      .row
+        .form-group.ssl-orginization
+          .label Organization (eg, company)
+          .input
+            input
+
+        .form-group.ssl-department
+          .label Department (eg, development)
+          .input
+            input
+
+      .row
+        .form-group.ssl-city
+          .label City
+          .input
+            input
+
+        .form-group.ssl-state
+          .label State/Province (full name)
+          .input
+            input
+
+      .row
+        .form-group.ssl-country
+          .label Country
+          .dropdown.cert-country
+            .selection #country
+            .open-area
+              .input.search
+                input(placeholder="search")
+              ul.options
+                //- li.option{ data: { 'foreach-country' => 'filtered_countries', source: 'country.0', 'event-click' => 'cert.set | withArguments "country", country.0', 'addclass-checked' => 'cert.country | eq country.0', 'addclass-active' => 'filtered_countries | indexOf country | eq active_index' } }
+                //- li.option{ data: { showif: 'filtered_countries.length | lteq 0' } } No Results Found
+
+  //- 
+  .save-zone.create-cert
+    .cancel Cancel
+    button.forward
+      .label Save &amp; Continue

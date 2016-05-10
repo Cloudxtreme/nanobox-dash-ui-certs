@@ -1,0 +1,40 @@
+#app-certs-edit.columns.col_right.eight
+
+  h2 #step_title
+
+  //- 
+  .step.one
+    p Copy <em>all</em> of the following text and paste it into your 3rd party's SSL generation form. Within the next 3 days you should receive from them your <strong>SSL Certificate</strong> and <strong>Certificate Authority</strong>, which you'll need for the next step.
+    .textarea.code
+      textarea(readonly="readonly", spellcheck="false") #csr
+
+    //- 
+    .save-zone.update-cert
+      .cancel Save &amp; Finish Later
+      .cancel Save &amp; Finish Later
+      button.forward
+        .label Continue
+
+  //- 
+  .step.two
+    form
+      #errors
+
+      fieldset
+        .form-group.ssl-cert
+          .label Paste <br/ > Certificate
+          .textarea.code
+            textarea(spellcheck="false") #crt
+
+        .form-group.ssl-ca
+          .label Paste <br/ > Certificate <br/ > Authority
+          .textarea.code
+            textarea(spellcheck="false") #ca
+
+      //- 
+      span.back Back
+
+      .save-zone.update-cert
+        .cancel Cancel
+        button.save
+          .label #step_action

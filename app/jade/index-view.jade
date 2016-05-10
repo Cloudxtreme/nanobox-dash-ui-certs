@@ -1,0 +1,22 @@
+.nanobox-dash-ui-certs
+
+  //- complete/installed certs
+  .cert.installed
+    .cert-domain #domain
+    img.shadow-icon(data-src="x")
+    button.simple.save-cert
+    img.shadow-icon(data-src="gear")
+
+  //- incomplete certs
+  .cert.incomplete
+    .action Continue
+    .cert-domain #domain - SSL creation in progress
+    i.ficon.ficon-x.small.delete-cert
+
+//- 
+button.hex.hex-icon-left.new-ssl-cert
+  img.shadow-icon(data-src="hex-new-btn")
+  .label
+    Add an SSL Certificate
+    .tail
+      span - $<span>#price</span> / <span>mo</span>

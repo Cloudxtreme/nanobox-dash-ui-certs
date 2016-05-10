@@ -1,0 +1,27 @@
+#app-certs-new              {
+
+  form                      {
+    fieldset                {
+      .form-group           { width:308px;
+        &:not(:last-child)  { margin-right:10px; }
+        &.ssl-country       { width:100%; }
+      }
+    }
+  }
+
+  .create-cert              {
+    .cancel                 { background:none; }
+    button.forward          { color:$dashboard_73; font-family:$museo; height:36px; margin: 3px 15px; padding: 0px 12px 0 20px; font-size:15px;
+      &:after               { border-width:18px 15px; right:-30px; }
+    }
+
+    &.creating, &.saving    { pointer-events:none;
+      button.forward        { background:$dashboard_92; color:$white;
+        .label              { display:none; }
+        &:before            { content:"Saving..." }
+        &:after             { border-left-color:$dashboard_92; }
+      }
+    }
+  }
+
+}
