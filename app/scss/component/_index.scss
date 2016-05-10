@@ -1,47 +1,47 @@
-.nanobox-dash-ui-certs                {width:100%;
-
-  .cert, .key                         {@include font-size(14px); position:relative; margin-bottom:8px; padding:8px; color:$dashboard_27; background:$dashboard_11;
-    // .ficon-x                          {float:right; padding:8px 8px 8px 16px; color:$dashboard_88; }
-  }
+.nanobox-dash-ui-certs      {width:100%;
 
   // cert
-  .cert                               {display:flex; align-items:center;
+  .cert                     {@include font-size(14px); display:flex; align-items:center; position:relative; margin-bottom:8px; padding:12px; color:$dashboard_88; background:$dashboard_11;
 
-    & > *                             {margin:auto 0px auto auto;}
-
-
-    // &:before                          { @include stamp("\0021", $white, $dashboard_23); position:absolute; top:0px; left:0px; margin:14px; }
-
-    .cert-domain                      {@include truncate(); margin:auto auto auto 0px;}
-    // .edit-cert                        {@include font-size(15px); padding:8px 10px; color:$dashboard_88; border-left:1px solid $dashboard_68; cursor:pointer;}
-    // button.save-cert                  {@include font-size(13px); padding:8px 5px; color:$dashboard_88; border-left:1px solid $dashboard_68; transition:none;
-    //   &:before                        {content:'save';}
-    //   &.saving                        {padding:8px 12px; pointer-events:none;
-    //     // &:before                      { content: '\0069'; display:inline-block; @include pagodacons(); @include spin(); }
-    //   }
-    // }
-    // .ficon-x                          { border-left:1px solid $dashboard_14; }
-
-    // .edit-cert, .save-cert, .ficon-x  { &:hover { color:white; } }
+    // default
+    .action                 {display:none; cursor:pointer;}
+    #check-mark             {@include border-radius(100%, 100%, 100%, 100%); display:none; margin-right:5px; padding:4px; background:$dashboard_88; transform:scale(0.9); g {transform:translateX(1px);}}
+    .cert-domain            {@include truncate(); span {display:none;}}
+    .save-cert              {display:none; margin-left:auto; cursor:pointer; &:hover {color:$white;}}
+    #gear                   {display:none; margin-left:auto; cursor:pointer; &:hover {path {fill:$white;}}}
+    #close-x                {display:none; margin-left:auto; cursor:pointer; transform:scale(0.9); &:hover {path {fill:$dashboard_125;}}}
 
     // incomplete
-    &.incomplete                      {
-      .action                         {@include transition(); position:absolute; top:0px; left:0px; width:120px; margin-right:34px; padding:16px 0px; text-align:center; color:$dashboard_73; background:$white; cursor:pointer;
-        &:after                       {@include transition(); content:""; border-top:23px solid red; border-bottom:23px solid red; border-left:16px solid red; border-color:transparent transparent transparent $white; }
-
-        &:hover, &.active             { color:$white; background:$dashboard_73;
-          &:after                     { border-color:transparent transparent transparent $dashboard_73; }
+    &.incomplete            {
+      .action               {@include transition(); display:inline-block; position:absolute; top:0px; left:0px; width:120px; padding:14px 0px; text-align:center; color:$dashboard_73; background:$white; cursor:pointer;
+        &:after             {@include transition(); content:""; position:absolute; top:0px; right:-16px; border-top:21px solid red; border-bottom:21px solid red; border-left:16px solid red; border-color:transparent transparent transparent $white; }
+        &:hover, &.active   {color:$white; background:$dashboard_73;
+          &:after           {border-color:transparent transparent transparent $dashboard_73;}
         }
       }
+      .cert-domain          {position:relative; left:136px; span {display:inline-block;}}
+      #close-x              {display:inline-block;}
     }
 
     // installed
-    &.installed                       {background:$dashboard_73;
-      .action                         {display:none;}
-      .cert-domain span               {display:none;}
-      .save-cert                      {display:none;}
-      // .ficon-x                        {border-left-color: white;}
-      // &:before                        {@include stamp("\0063", $white, $dashboard_14); @include font-size(12px, 20px); margin-right:10px;}
+    &.installed             {background:$dashboard_73;
+      #check-mark           {display:inline-block;}
+      #gear                 {display:inline-block;}
+    }
+
+    // editing
+    &.editing               {background:$dashboard_73;
+      #check-mark           {display:inline-block;}
+      .save-cert            {display:inline-block;}
+    }
+  }
+
+  // new cert
+  .new-cert                 {display:flex; align-items:center; cursor:pointer;
+    #new-btn                {margin-right:8px;}
+
+    &:hover                 {color:$dashboard_88;
+      #new-btn              {polygon {fill:$dashboard_73;} path {fill:$white;}}
     }
   }
 }

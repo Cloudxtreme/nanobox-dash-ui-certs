@@ -1,17 +1,15 @@
 .nanobox-dash-ui-certs.shadow-parent
 
   //- complete/installed certs
-  .cert.installed
+  .cert
     .action Continue
+    img.shadow-icon(data-src="check-mark")
     .cert-domain #domain <span>- SSL creation in progress</span>
     img.shadow-icon(data-src="close-x")
-    button.simple.save-cert
+    .save-cert save
     img.shadow-icon(data-src="gear")
 
   //- 
-  button.hex.hex-icon-left.new-ssl-cert
+  .new-cert
     img.shadow-icon(data-src="new-btn")
-    .label
-      Add an SSL Certificate
-      .tail
-        span - $<span>#price</span> / <span>mo</span>
+    .label Add an SSL Certificate - $<span>#price</span> / <span>mo</span>

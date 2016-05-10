@@ -17,7 +17,9 @@ html(lang="en")
     .certs
     
     .controls
-      .toggle.state Set Inactive
+      .toggle.state(data-state="installed") Installed
+      .toggle.state(data-state="incomplete") Incomplete
+      .toggle.state(data-state="editing") Editing
 
     // build:remove 
     script(src="bower-libs/jquery/dist/jquery.js")
