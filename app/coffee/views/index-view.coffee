@@ -11,6 +11,9 @@ module.exports = class IndexView
     @$node = $(view())
     $el.append @$node
 
+    # add svg icons
+    castShadows($(".shadow-parent"))
+
     #
     @build()
 

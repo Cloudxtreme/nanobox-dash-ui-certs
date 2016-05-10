@@ -1,3 +1,5 @@
 window.init = () ->
-  certs = new nanobox.Certs $("body")
+  certs = new nanobox.Certs $(".certs")
   certs.build()
+
+  
