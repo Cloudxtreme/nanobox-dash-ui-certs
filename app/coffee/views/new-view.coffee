@@ -13,14 +13,14 @@ module.exports = class NewView extends View
   # ".finish" should complete the process and send a user back to "start"
 
   #
-  constructor: (@$el, @options={}) ->
-
+  constructor: (@$el, @options={}, @changeViewCb) ->
     #
     @step = @options.step || 1
 
     #
     @$node = $(view({key: @options.getKey()}))
     @$el.append @$node
+    super @$el, @options, @changeViewCb
 
   #
   build: () =>
@@ -66,9 +66,7 @@ module.exports = class NewView extends View
     @$node.find(".save-zone .finish").click (e) => @_finish()
 
   # cancel; unload this view and load the "index" view
-  _cancel: () ->
-    indexView = new IndexView @$el, @options
-    @destroy(indexView.build)
+  _cancel: () -> @changeViewCb this, 'index'
 
   # reset; set the view back to "start"
   _reset: () ->

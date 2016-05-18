@@ -1,16 +1,16 @@
 View    = require 'view'
-NewView = require 'views/new-view'
+# NewView = require 'views/new-view'
 view    = require 'jade/index-view'
 
 #
 module.exports = class IndexView extends View
 
   #
-  constructor: (@$el, @options={}) ->
-
+  constructor: (@$el, @options={}, @changeViewCb) ->
     #
     @$node = $(view({certs: @options.certs}))
     @$el.append @$node
+    super @$el, @options={}, @changeViewCb
 
   #
   build: () =>
@@ -19,6 +19,4 @@ module.exports = class IndexView extends View
     castShadows($(".shadow-parent"))
 
     #
-    @$node.find(".new-cert").click (e) =>
-      newView = new NewView @$el, @options
-      @destroy(newView.build)
+    @$node.find(".new-cert").click (e) => @changeViewCb( this, 'new' )

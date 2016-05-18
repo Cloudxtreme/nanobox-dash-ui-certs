@@ -8,11 +8,12 @@ module.exports = class EditView extends View
   _step: 1
 
   #
-  constructor: ($el, @options={}) ->
+  constructor: ($el, @options={}, @changeViewCb) ->
 
     #
     @$node = $(view())
     $el.append @$node
+    super $el, @options, @changeViewCb
 
   #
   build: () ->

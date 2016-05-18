@@ -1,7 +1,7 @@
 IndexView = require 'views/index-view'
-NewView = require 'views/new-view'
-ShowView = require 'views/show-view'
-EditView = require 'views/edit-view'
+NewView   = require 'views/new-view'
+ShowView  = require 'views/show-view'
+EditView  = require 'views/edit-view'
 
 class Certs
 
@@ -15,14 +15,20 @@ class Certs
 
   #
   build : () ->
-    view = switch @options.view
-      when "index" then new IndexView @$el, @options
-      when "new"   then new NewView @$el, @options
-      when "show"  then new ShowView @$el, @options
-      when "edit"  then new EditView @$el, @options
+    @changeView null, @options.view
 
-    #
-    view.build()
+  changeView : (oldView, viewId) =>
+    newView = switch viewId
+      when "index" then new IndexView @$el, @options, @changeView
+      when "new"   then new NewView @$el, @options,   @changeView
+      when "show"  then new ShowView @$el, @options,  @changeView
+      when "edit"  then new EditView @$el, @options,  @changeView
+
+    if !oldView?
+      newView.build()
+    else
+      oldView.destroy newView.build
+
 
 window.nanobox ||= {}
 nanobox.Certs = Certs
