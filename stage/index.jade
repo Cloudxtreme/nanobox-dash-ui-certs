@@ -7,6 +7,7 @@ html(lang="en")
     // build:remove 
     link(href="stage/css/stage.css", rel="stylesheet")
     link(href="css/shared-svg.css", rel="stylesheet")
+    //- link(href="bower-components/select2/dist/css/select2.min.css", rel="stylesheet")
     // endbuild
     
     // build:css style.css
@@ -15,17 +16,14 @@ html(lang="en")
 
   body
     .certs
-    
-    .controls
-      .toggle.state(data-state="installed") Installed
-      .toggle.state(data-state="incomplete") Incomplete
-      .toggle.state(data-state="editing") Editing
 
     // build:remove 
     script(src="bower-libs/jquery/dist/jquery.js")
     script(src="bower-libs/jade/runtime.js")
     script(src="js/shared-svg.js")
     script(src="bower-libs/shadow-icons/rel/app.js")
+    script(src="bower-libs/select2/dist/js/select2.min.js")
+    script(src="bower-libs/velocity/velocity.min.js")
     script(src="https://use.typekit.net/cqd5kth.js")
     // endbuild
     

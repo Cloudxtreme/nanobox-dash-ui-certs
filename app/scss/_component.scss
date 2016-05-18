@@ -135,4 +135,94 @@ $dashboard_135:   #672612;
 $dashboard_136:   #450317;
 $dashboard_137:   #232323;
 
+*                                       {
+  @include box-sizing();
+  // @include selection-color($dashboard_69);
+
+  &:before, &:after {@include box-sizing();}
+
+  margin:0px; padding:0px; border:none; outline:none; text-decoration:none; list-style-type:none; list-style-position:outside; vertical-align:top; border-collapse:collapse; resize:none; background:none;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+//
+textarea                  {@include font-size(12px, 18px); width:100%; min-height:360px; padding:8px; color:$dashboard_92; font-family:$monaco; background:$dashboard_64;
+  &.error                 {outline:1px solid $dashboard_126;}
+}
+
+//
+form                      {display:inline-block; width:100%;
+  fieldset                {display:block; width:100%;
+
+    .row                  {display:flex; justify-content:space-between;
+      &:not(:last-child)  {margin-bottom:21px;}
+    }
+
+    .dropdown             {color:$dashboard_64;}
+
+    .form-group           {position:relative; flex:0 1 49%;
+      .label              {@include font-size(13px); margin-bottom:8px; color:$dashboard_15;}
+      input               {@include font-size(15px); position:relative; color:$dashboard_100; background:$white; overflow:hidden;}
+      input               {width:100%; height:41px; padding:9px 10px 6px 10px; font-size:15px; line-height:18px; color:inherit; background:$dashboard_2; @include transition(all, 0.08s);
+        &:valid           {background:$dashboard_2; color:$dashboard_73; @include transition(color, 1s);}
+        &:focus           {background:white; color:$dashboard_30; @include transition(background, 0s);}
+      }
+    }
+  }
+}
+
+//
+p                         {@include font-size(14px, 21px); margin-bottom:12px; color:$dashboard_23;}
+
+//
+button.forward            {@include transition(); position:relative; margin-right:12px; color:$dashboard_92; background:$white;
+  &:after                 {@include transition(); content:""; position:absolute; top:0px; right:-24px; border:12px solid red; border-color:transparent transparent transparent $white;}
+  &:hover                 {background:$dashboard_73;
+    &:after               {border-color:transparent transparent transparent $dashboard_73;}
+    .label                {color:white;}
+  }
+  &.selected, &.active,   {color:$white; background:$dashboard_92;
+    &:after               {border-color:transparent transparent transparent $dashboard_92;}
+    .label                {color:inherit;}
+  }
+}
+
+//
+button.forward,
+button.save               {@include font-size(15px); color:$dashboard_73; padding:12px 12px 11px 12px; cursor:pointer;
+  &:after                 {border-width:19px 15px; right:-30px;}
+}
+
+//
+.save-zone                {display:flex; align-items:center; justify-content:space-between; margin-top:12px;
+  & > *                   {color:$dashboard_79; cursor:pointer;}
+  .cancel                 {margin:auto 12px auto auto; color:$dashboard_79; background:none;}
+
+  @mixin button-save()    {@include transition(background, 0.1s); color:$white; background:$dashboard_73;}
+  button.save             {@include border-radius; @include button-save; display:flex; align-items:center; position:relative;
+    // &:before              {@include transition(); @include border-radius(100%, 100%, 100%, 100%); content:""; position:absolute; top:0px; left:0px; border:1px solid $white;}
+    #check-mark           {margin-right:8px; path {fill:$dashboard_79;}}
+
+    &:hover               {color:$dashboard_73; background:$white; #check-mark{path {fill:$dashboard_73;}}}
+  }
+
+  &.creating, &.saving    {pointer-events:none;
+    button.forward        {background:$dashboard_92; color:$white;
+      .label              {display:none;}
+      &:before            {content:"Saving..."}
+      &:after             {border-left-color:$dashboard_92;}
+    }
+  }
+}
+
+//
 @import 'component/index';
+@import 'component/new';
+@import 'component/show';
+@import 'component/edit';

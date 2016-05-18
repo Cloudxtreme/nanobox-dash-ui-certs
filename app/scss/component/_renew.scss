@@ -1,9 +1,0 @@
-#app-certs-renew            { @extend #app-certs-edit;
-
-  .renew-cert               {
-    .cancel                 { background:none; width:auto; }
-    button.forward          { color:$dashboard_73; font-family:$museo; height:36px; margin: 3px 15px; padding: 0px 12px 0 20px; font-size:15px;
-      &:after               { border-width:18px 15px; right:-30px; }
-    }
-  }
-}

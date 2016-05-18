@@ -1,59 +1,97 @@
-#app-certs-new.columns.col_right.eight
-
-  h2 New SSL Certificate - Step 1 of 3
+.nanobox-dash-ui-certs.new
 
   //- 
-  form
-    #errors
-
-    fieldset
-      .row
-        .form-group.ssl-domain
-          .label Domain Name
-          .input.error
-            input
-
-        .form-group.ssl-email
-          .label Email
-          .input
-            input
-
-      .row
-        .form-group.ssl-orginization
-          .label Organization (eg, company)
-          .input
-            input
-
-        .form-group.ssl-department
-          .label Department (eg, development)
-          .input
-            input
-
-      .row
-        .form-group.ssl-city
-          .label City
-          .input
-            input
-
-        .form-group.ssl-state
-          .label State/Province (full name)
-          .input
-            input
-
-      .row
-        .form-group.ssl-country
-          .label Country
-          .dropdown.cert-country
-            .selection #country
-            .open-area
-              .input.search
-                input(placeholder="search")
-              ul.options
-                //- li.option{ data: { 'foreach-country' => 'filtered_countries', source: 'country.0', 'event-click' => 'cert.set | withArguments "country", country.0', 'addclass-checked' => 'cert.country | eq country.0', 'addclass-active' => 'filtered_countries | indexOf country | eq active_index' } }
-                //- li.option{ data: { showif: 'filtered_countries.length | lteq 0' } } No Results Found
-
+  .options
+    .option.toggle.checked(data-selection = "letsencrypt") Use <a href="" target="_blank">LetsEncrypt</a>
+    .option.toggle(data-selection = "thirdparty") Key &amp; Install a 3rd party cert
+    .option.toggle(data-selection = "import") Import an existing cert
+    
+    .save-zone.shadow-parent
+      .cancel Cancel
+      button.forward.start
+        .label Lets Go!
+    
   //- 
-  .save-zone.create-cert
-    .cancel Cancel
-    button.forward
-      .label Save &amp; Continue
+  .selections
+  
+    //- 
+    .selection.letsencrypt
+    
+      //- 
+      include ./shared/_form.jade
+      
+      //- 
+      .save-zone.shadow-parent
+        .reset Cancel
+        button.save.finish
+          img.shadow-icon(data-src="check-mark")
+          .label Save &amp; Finish
+
+    //- 
+    .selection.thirdparty
+    
+      .step.one
+        //- 
+        include ./shared/_form.jade
+        
+        //- 
+        .save-zone.renew-cert
+          .reset Cancel
+          button.forward.continue
+            .label Save &amp; Continue
+      
+      //- 
+      .step.two
+        p Copy <em>all</em> of the following text and paste it into your 3rd party's SSL generation form. Within the next few days you should receive from them your <strong>SSL Certificate (cert)</strong> and <strong>Certificate Authority (ca)</strong>, which you'll need for the next step.
+        textarea(readonly="readonly", spellcheck="false") #{key}
+
+        //- 
+        .save-zone.renew-cert
+          .cancel Save &amp; Finish Later
+          button.forward.continue
+            .label Continue
+
+      //- 
+      .step.three
+        form
+          #errors
+
+          fieldset
+            .form-group.ssl-cert
+              textarea(spellcheck="false")
+
+            .form-group.ssl-ca
+              textarea(spellcheck="false")
+
+          //- 
+          .save-zone.renew-cert
+            span.back Back
+            .reset Cancel
+            button.save.finish
+              .label Save &amp; Finish
+    
+    //- 
+    .selection.import
+      p To import an existing SSL Certificate, simply copy and paste your existing <strong>Key</strong>, <strong>Certificate (cert)</strong>, and <strong>Certificate Authority (ca)</strong> then select "import".
+      
+      form
+        #errors
+        
+        fieldset
+          .form-group.cert-key
+            textarea(spellcheck="false")
+
+          .form-group.ssl-cert
+            textarea(spellcheck="false")
+
+          .form-group.ssl-ca
+            textarea(spellcheck="false")
+
+        //- 
+        .save-zone.shadow-parent
+          .reset Cancel
+          button.save.finish
+            img.shadow-icon(data-src="check-mark")
+            .label Import
+
+    

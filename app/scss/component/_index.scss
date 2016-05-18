@@ -1,47 +1,49 @@
-.nanobox-dash-ui-certs      {width:100%;
+.nanobox-dash-ui-certs.index  {width:100%;
+
+  //
+  &:before, &:after           {@include box-sizing();}
 
   // cert
-  .cert                     {@include font-size(14px); display:flex; align-items:center; position:relative; margin-bottom:8px; padding:12px; color:$dashboard_88; background:$dashboard_11;
+  .cert                       {@include font-size(14px); display:flex; align-items:center; position:relative; margin-bottom:8px; padding:12px; color:$dashboard_88; background:$dashboard_11;
 
     // default
-    .action                 {display:none; cursor:pointer;}
-    #check-mark             {@include border-radius(100%, 100%, 100%, 100%); display:none; margin-right:5px; padding:4px; background:$dashboard_88; transform:scale(0.9); g {transform:translateX(1px);}}
-    .cert-domain            {@include truncate(); span {display:none;}}
-    .save-cert              {display:none; margin-left:auto; cursor:pointer; &:hover {color:$white;}}
-    #gear                   {display:none; margin-left:auto; cursor:pointer; &:hover {path {fill:$white;}}}
-    #close-x                {display:none; margin-left:auto; cursor:pointer; transform:scale(0.9); &:hover {path {fill:$dashboard_125;}}}
+    .action                   {display:none; cursor:pointer;}
+    #check-mark               {@include border-radius(100%, 100%, 100%, 100%); display:none; box-sizing:initial; margin-right:5px; padding:4px; background:$dashboard_88; transform:scale(0.9); g {transform:translateX(1px);}}
+    .cert-domain              {@include truncate(); span {display:none;}}
+    #gear                     {display:none; margin-left:auto; cursor:pointer; &:hover {path {fill:$white;}}}
+    #close-x                  {display:none; margin-left:auto; cursor:pointer; transform:scale(0.9); path {fill:$dashboard_88;}; &:hover {path {fill:$dashboard_125;}}}
 
     // incomplete
-    &.incomplete            {
-      .action               {@include transition(); display:inline-block; position:absolute; top:0px; left:0px; width:120px; padding:14px 0px; text-align:center; color:$dashboard_73; background:$white; cursor:pointer;
-        &:after             {@include transition(); content:""; position:absolute; top:0px; right:-16px; border-top:21px solid red; border-bottom:21px solid red; border-left:16px solid red; border-color:transparent transparent transparent $white; }
-        &:hover, &.active   {color:$white; background:$dashboard_73;
-          &:after           {border-color:transparent transparent transparent $dashboard_73;}
+    &.incomplete              {
+      .action                 {@include transition(); display:inline-block; position:absolute; top:0px; left:0px; width:120px; padding:14px 0px; text-align:center; color:$dashboard_73; background:$white; cursor:pointer;
+        &:after               {@include transition(); content:""; position:absolute; top:0px; right:-16px; border-top:21px solid red; border-bottom:21px solid red; border-left:16px solid red; border-color:transparent transparent transparent $white; }
+        &:hover, &.active     {color:$white; background:$dashboard_73;
+          &:after             {border-color:transparent transparent transparent $dashboard_73;}
         }
       }
-      .cert-domain          {position:relative; left:136px; span {display:inline-block;}}
-      #close-x              {display:inline-block;}
+      .cert-domain            {position:relative; left:136px; span {display:inline-block;}}
+      #close-x                {display:inline-block;}
     }
 
     // installed
-    &.installed             {background:$dashboard_73;
-      #check-mark           {display:inline-block;}
-      #gear                 {display:inline-block;}
+    &.installed               {background:$dashboard_73;
+      #check-mark             {display:inline-block;}
+      #gear                   {display:inline-block;}
     }
 
     // editing
-    &.editing               {background:$dashboard_73;
-      #check-mark           {display:inline-block;}
-      .save-cert            {display:inline-block;}
+    &.editing                 {background:$dashboard_73;
+      #check-mark             {display:inline-block;}
     }
   }
 
   // new cert
-  .new-cert                 {display:flex; align-items:center; cursor:pointer;
-    #new-btn                {margin-right:8px;}
+  .new-cert                   {display:flex; align-items:center; cursor:pointer;
+    #new-btn                  {margin-right:8px;}
+    span                      {@include font-size(13px); color:$dashboard_19;}
 
-    &:hover                 {color:$dashboard_88;
-      #new-btn              {polygon {fill:$dashboard_73;} path {fill:$white;}}
+    &:hover                   {color:$dashboard_88;
+      #new-btn                {polygon {fill:$dashboard_73;} path {fill:$white;}}
     }
   }
 }

@@ -1,21 +1,24 @@
-#
-view = require 'jade/index-view'
+View    = require 'view'
+NewView = require 'views/new-view'
+view    = require 'jade/index-view'
 
 #
-module.exports = class IndexView
+module.exports = class IndexView extends View
 
   #
-  constructor: ($el, @options) ->
+  constructor: (@$el, @options={}) ->
 
     #
-    @$node = $(view())
-    $el.append @$node
+    @$node = $(view({certs: @options.certs}))
+    @$el.append @$node
+
+  #
+  build: () =>
 
     # add svg icons
     castShadows($(".shadow-parent"))
 
     #
-    @build()
-
-  #
-  build: () ->
+    @$node.find(".new-cert").click (e) =>
+      newView = new NewView @$el, @options
+      @destroy(newView.build)

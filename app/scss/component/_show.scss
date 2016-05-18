@@ -1,3 +1,14 @@
-#app-certs-show   {
-  button          { margin-right:24px; padding:12px; font-family:$museo; font-size:14px; }
+.nanobox-dash-ui-certs.show {width:100%;
+
+  //
+  .actions                  {display:flex; align-items:center; justify-content:space-between; margin-top:10px;
+    .action                 {@include border-radius; @include transition(); @include font-size(14px); flex:0 1 175px; padding:12px; color:$dashboard_73; text-align:center; border:none; background:$white; cursor:pointer;
+      &:hover               {color:$dashboard_85;}
+
+      //
+      &.edit                {}
+      &.renew               {}
+      &.delete              {background:$white; color:$dashboard_126; &:hover{background:$dashboard_126; color:$white;}}
+    }
+  }
 }

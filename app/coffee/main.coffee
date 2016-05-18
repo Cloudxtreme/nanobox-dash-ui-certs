@@ -1,9 +1,7 @@
-EditView = require 'views/edit-view'
 IndexView = require 'views/index-view'
 NewView = require 'views/new-view'
-RenewView = require 'views/renew-view'
 ShowView = require 'views/show-view'
-
+EditView = require 'views/edit-view'
 
 class Certs
 
@@ -17,12 +15,14 @@ class Certs
 
   #
   build : () ->
-    switch @options.view
-      when "edit"  then new EditView @$el, @options
+    view = switch @options.view
       when "index" then new IndexView @$el, @options
       when "new"   then new NewView @$el, @options
-      when "renew" then new RenewView @$el, @options
       when "show"  then new ShowView @$el, @options
+      when "edit"  then new EditView @$el, @options
+
+    #
+    view.build()
 
 window.nanobox ||= {}
 nanobox.Certs = Certs
