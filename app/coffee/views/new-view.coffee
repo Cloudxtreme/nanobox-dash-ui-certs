@@ -1,6 +1,5 @@
-View      = require 'view'
-IndexView = require 'views/index-view'
-view      = require 'jade/new-view'
+View = require 'view'
+view = require 'jade/new-view'
 
 #
 module.exports = class NewView extends View
@@ -13,14 +12,18 @@ module.exports = class NewView extends View
   # ".finish" should complete the process and send a user back to "start"
 
   #
-  constructor: (@$el, @options={}, @changeViewCb) ->
+  constructor: (@$el, @options={}) ->
+
     #
+    @main = @options.main
     @step = @options.step || 1
 
     #
     @$node = $(view({key: @options.getKey()}))
     @$el.append @$node
-    super @$el, @options, @changeViewCb
+
+    #
+    super
 
   #
   build: () =>
@@ -29,7 +32,7 @@ module.exports = class NewView extends View
     castShadows($(".shadow-parent"))
 
     #
-    @_determineStep()
+    @main.currentView = @
 
     # if there isn't anything in the textarea then "focus" the parent
     @$node.find("textarea").focus (e) ->
@@ -65,8 +68,14 @@ module.exports = class NewView extends View
     @$node.find(".save-zone .back").click (e) => @_previous()
     @$node.find(".save-zone .finish").click (e) => @_finish()
 
+    #
+    @_determineStep()
+
+    #
+    @fadeIn()
+
   # cancel; unload this view and load the "index" view
-  _cancel: () -> @changeViewCb this, 'index'
+  _cancel: () -> @main.loadView('index')
 
   # reset; set the view back to "start"
   _reset: () ->

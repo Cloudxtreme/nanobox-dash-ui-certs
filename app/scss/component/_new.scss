@@ -3,33 +3,6 @@
   .selections .selection    {display:none;}
 
   //
-  form                      {
-    fieldset                {
-      .form-group           {
-
-        //
-        &:not(:last-child)  {margin-bottom:18px;}
-
-        //
-        &.cert-key,
-        &.ssl-cert,
-        &.ssl-ca            {
-          &:before          {@include transition(opacity, 0.10s); content:""; position:absolute; top:0px; right:0px; width:100%; height:100%; border:5px dashed $dashboard_63; background:$black; opacity:0.25; pointer-events:none;}
-          &:after           {@include font-size(18px); @include transition(opacity, 0.10s); position:absolute; top:45%; left:0px; width:100%; color:$dashboard_63; text-align:center; pointer-events:none;}
-          &.focus           {&:before, &:after {opacity:0;}}
-        }
-
-        //
-        &.cert-key:after    {content:"Paste Key";}
-        &.ssl-cert:after    {content:"Paste Certificate";}
-        &.ssl-ca:after      {content:"Paste Certificate Authority";}
-
-        &.ssl-country       {flex:0 1 100%;}
-      }
-    }
-  }
-
-  //
   .toggle                   {@include font-size(14px); display:flex; align-items:center; margin-bottom:15px; color:$dashboard_20; cursor:pointer;
     a                       {margin-left:3px; color:$dashboard_73; text-decoration:underline;}
     &:before                {@include border-radius(100%, 100%, 100%, 100%); content:""; display:inline-block; width:14px; height:14px; margin-right:5px; background:$white;}

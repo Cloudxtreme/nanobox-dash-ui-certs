@@ -8,15 +8,26 @@ module.exports = class EditView extends View
   _step: 1
 
   #
-  constructor: ($el, @options={}, @changeViewCb) ->
+  constructor: ($el, @options={}) ->
+
+    #
+    @main = @options.main
 
     #
     @$node = $(view())
     $el.append @$node
-    super $el, @options, @changeViewCb
+
+    #
+    super
 
   #
   build: () ->
+
+    # add svg icons
+    castShadows($(".shadow-parent"))
+
+    #
+    @main.currentView = @
 
     #
     @_determineStep()
@@ -36,6 +47,9 @@ module.exports = class EditView extends View
 
     #
     @$node.find(".save-zone .back").click (e) => @previous(); @_determineStep()
+
+    #
+    @fadeIn()
 
   # next
   next: () -> @_step++

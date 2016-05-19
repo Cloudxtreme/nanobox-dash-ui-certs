@@ -1,6 +1,80 @@
 .nanobox-dash-ui-certs.show
-  p Use “Edit / View Details” to view and/or modify the Certificate and Certificate Authority tied to your SSL certificate. “Renew / Rekey” will provide you with what you need to renew or rekey your SSL certificate. Your current certificate will remain active and unchanged until these processes are completely finished.
-  .actions
-    .action.edit Edit / View Details
-    .action.renew Renew / Rekey
-    .action.delete Delete Cert
+
+  //- 
+  .options
+    .option.toggle.checked(data-selection = "edit") View/Edit the Certificate and Certificate Authority for your SSL certificate.
+    .option.toggle(data-selection = "renew") Renew/Rekey your SSL certificate.
+    
+    .save-zone.shadow-parent
+      .cancel Cancel
+      button.forward.start
+        .label Continue
+
+  //- .options
+  //-   //- p Your current certificate will remain active and unchanged until these processes are completely finished.
+  //-   .option.edit
+  //-     .action View / Edit Details
+  //-     p.description 
+  //-   .option.renew
+  //-     .action Renew / Rekey
+  //-     p.description 
+    
+  .selections
+    
+    //- 
+    .selection.renew
+      //- 
+      .step.one
+        p Copy <em>all</em> of the following text and paste it into your 3rd party's SSL generation form. Within the next few days you should receive from them your <strong>SSL Certificate (cert)</strong> and <strong>Certificate Authority (ca)</strong>, which you'll need for the next step.
+        textarea(readonly="readonly", spellcheck="false") #{key}
+
+        //- 
+        .save-zone.renew-cert
+          .cancel Save &amp; Finish Later
+          button.forward.continue
+            .label Continue
+
+      //- 
+      .step.two
+        form
+          #errors
+
+          fieldset
+            .form-group.ssl-cert
+              label Certificate
+              textarea(spellcheck="false")
+
+            .form-group.ssl-ca
+              label Certificate Authority
+              textarea(spellcheck="false")
+
+          //- 
+          .save-zone
+            span.back Back
+            .reset Cancel
+            button.save.finish
+              .label Save &amp; Finish
+        
+    .selection.edit
+      form
+        #errors
+        
+        fieldset
+          .form-group.cert-key.focus
+            label Key
+            textarea(spellcheck="false") #{cert.key}
+
+          .form-group.ssl-cert.focus
+            label Certificate
+            textarea(spellcheck="false") #{cert.cert}
+
+          .form-group.ssl-ca.focus
+            label Certificate Authority
+            textarea(spellcheck="false") #{cert.ca}
+
+        //- 
+        .save-zone.shadow-parent
+          .reset Cancel
+          button.save.finish
+            img.shadow-icon(data-src="check-mark")
+            .label Save

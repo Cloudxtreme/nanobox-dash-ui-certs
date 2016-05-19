@@ -1,14 +1,16 @@
 .nanobox-dash-ui-certs.index
 
-  //
+  //- 
+  include ./shared/_destroy.jade
+
+  //- 
   .certs
     each cert in certs
-      .cert.shadow-parent(class = cert.state)
+      .cert.shadow-parent(id = cert.id, class = cert.state, data-id = cert.id)
         .action Continue
         img.shadow-icon(data-src="check-mark")
         .cert-domain #{cert.domain} <span>- SSL creation in progress</span>
         img.shadow-icon(data-src="close-x")
-        img.edit-cert.shadow-icon(data-src="gear")
 
   //- 
   .new-cert.shadow-parent

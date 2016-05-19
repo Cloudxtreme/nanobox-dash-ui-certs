@@ -1,14 +1,35 @@
 .nanobox-dash-ui-certs.show {width:100%;
 
+  // //
+  // .options                  {display:flex; justify-content:space-between;
+  //   .option                 {flex:0 1 49%;
+  //     .action               {@include border-radius; @include transition(); @include font-size(14px); flex:0 1 175px; margin-bottom:12px; padding:12px; color:$dashboard_73; text-align:center; border:none; background:$white; cursor:pointer;
+  //       &:hover             {color:$white; background:$dashboard_73;}
   //
-  .actions                  {display:flex; align-items:center; justify-content:space-between; margin-top:10px;
-    .action                 {@include border-radius; @include transition(); @include font-size(14px); flex:0 1 175px; padding:12px; color:$dashboard_73; text-align:center; border:none; background:$white; cursor:pointer;
-      &:hover               {color:$dashboard_85;}
+  //       //
+  //       &.edit              {}
+  //       &.renew             {}
+  //       &.delete            {background:$white; color:$dashboard_126; &:hover{background:$dashboard_126; color:$white;}}
+  //     }
+  //   }
+  // }
 
-      //
-      &.edit                {}
-      &.renew               {}
-      &.delete              {background:$white; color:$dashboard_126; &:hover{background:$dashboard_126; color:$white;}}
-    }
+  //
+  .selections               {
+
+    // initial state
+    .selection              {display:none;}
+
+    //
+    &.edit                  {.selection.edit {display:inline-block;}}
+    &.renew                 {.selection.renew {display:inline-block;}}
+  }
+
+  //
+  .toggle                   {@include font-size(14px); display:flex; align-items:center; margin-bottom:15px; color:$dashboard_20; cursor:pointer;
+    a                       {margin-left:3px; color:$dashboard_73; text-decoration:underline;}
+    &:before                {@include border-radius(100%, 100%, 100%, 100%); content:""; display:inline-block; width:14px; height:14px; margin-right:5px; background:$white;}
+    &:hover                 {color:$dashboard_73;}
+    &.checked               {pointer-events:none; &:before {border:3px solid white; background:$dashboard_73;}}
   }
 }

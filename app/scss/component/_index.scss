@@ -10,7 +10,6 @@
     .action                   {display:none; cursor:pointer;}
     #check-mark               {@include border-radius(100%, 100%, 100%, 100%); display:none; box-sizing:initial; margin-right:5px; padding:4px; background:$dashboard_88; transform:scale(0.9); g {transform:translateX(1px);}}
     .cert-domain              {@include truncate(); span {display:none;}}
-    #gear                     {display:none; margin-left:auto; cursor:pointer; &:hover {path {fill:$white;}}}
     #close-x                  {display:none; margin-left:auto; cursor:pointer; transform:scale(0.9); path {fill:$dashboard_88;}; &:hover {path {fill:$dashboard_125;}}}
 
     // incomplete
@@ -26,19 +25,14 @@
     }
 
     // installed
-    &.installed               {background:$dashboard_73;
+    &.installed               {background:$dashboard_73; cursor:pointer;
       #check-mark             {display:inline-block;}
-      #gear                   {display:inline-block;}
-    }
-
-    // editing
-    &.editing                 {background:$dashboard_73;
-      #check-mark             {display:inline-block;}
+      #close-x                {display:inline-block;}
     }
   }
 
   // new cert
-  .new-cert                   {display:flex; align-items:center; cursor:pointer;
+  .new-cert                   {display:inline-flex; align-items:center; cursor:pointer;
     #new-btn                  {margin-right:8px;}
     span                      {@include font-size(13px); color:$dashboard_19;}
 
