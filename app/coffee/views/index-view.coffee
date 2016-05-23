@@ -29,7 +29,12 @@ module.exports = class IndexView extends View
     # add event handlers
 
     # load "edit/show" view
-    @$node.find(".cert").click (e) =>
+    @$node.find(".cert.incomplete .action").click (e) =>
+      @options.cert = @main._getCertByID($(e.currentTarget).data("id"))
+      @main.loadView('show')
+
+    # load "edit/show" view
+    @$node.find(".cert.installed").click (e) =>
       @options.cert = @main._getCertByID($(e.currentTarget).data("id"))
       @main.loadView('show')
 
