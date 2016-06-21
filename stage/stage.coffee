@@ -1,6 +1,6 @@
-window.init = () ->
 
-  getKey = () -> "
+# 
+getKey = () -> "
 -----BEGIN CERTIFICATE REQUEST-----
 MIIC2DCCAcACAQAwgZIxCzAJBgNVBAYTAlVTMQ4wDAYDVQQIEwVJZGFobzEQMA4G
 A1UEBxMHUmV4YnVyZzEPMA0GA1UECgwGbWFpdHJkMRQwEgYDVQQLDAtkZXZlbG9w
@@ -20,26 +20,26 @@ Qk6ac+ZML85Xs9O6oOwIBC8UnBDEGj7/E0Tx3Na+S2DqU0OhnN7iGtKp6BWITevB
 wB3pPQ/0TcvsJfE0
 -----END CERTIFICATE REQUEST-----"
 
-  #
-  onDestroy = (id) -> {success:true, errors:[]}
+#
+onDestroy = (id) -> {success:true, errors:[]}
 
-  # 
-  @options = {
-    getKey: getKey,
-    certs: [
-      {id:"abc", domain:"domain.com", state:"incomplete", status:"complete" },
-      {
-        id:"123",
-        domain:"domain.com",
-        state:"installed",
-        status:"complete",
-        key:  getKey(),
-        ca:   getKey(),
-        cert: getKey()
-      }
-    ],
-    onDestroy: onDestroy
-  }
+#
+@options = {
+  getKey: getKey,
+  certs: [
+    {id:"abc", domain:"domain.com", state:"incomplete", status:"complete" },
+    {
+      id:"123",
+      domain:"domain.com",
+      state:"installed",
+      status:"complete",
+      key:  getKey(),
+      ca:   getKey(),
+      cert: getKey()
+    }
+  ],
+  onDestroy: onDestroy
+}
 
-  certs = new nanobox.Certs $(".certs"), @options
-  certs.build()
+certs = new nanobox.Certs $(".certs"), @options
+certs.build()
