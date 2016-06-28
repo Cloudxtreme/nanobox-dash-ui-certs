@@ -43,5 +43,5 @@ window.init = () ->
   }
 
   #
-  certs = new nanobox.Certs $("body"), @options
+  certs = new nanobox.Certs $("body .certs"), @options
   certs.build()
